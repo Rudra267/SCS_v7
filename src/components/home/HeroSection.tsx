@@ -164,25 +164,25 @@ const getMediaClass = (fit: Slide["mediaFit"] = "cover", extraClassName = "") =>
 const HeroSection = () => {
   const [current, setCurrent] = useState(0);
   const [direction, setDirection] = useState(1);
- const [selectedState, setSelectedState] = useState("");
-const [selectedCity, setSelectedCity] = useState("");
-const [selectedBranch, setSelectedBranch] = useState("");
+  const [selectedState, setSelectedState] = useState("");
+  const [selectedCity, setSelectedCity] = useState("");
+  const [selectedBranch, setSelectedBranch] = useState("");
 
-const cities = {
-  Telangana: ["Hyderabad", "Warangal"],
-  "Andhra Pradesh": ["Vijayawada", "Visakhapatnam"],
-  Karnataka: ["Bengaluru"],
-  "Tamil Nadu": ["Chennai"]
-};
+  const cities: Record<string, string[]> = {
+    Telangana: ["Hyderabad", "Warangal"],
+    "Andhra Pradesh": ["Vijayawada", "Visakhapatnam"],
+    Karnataka: ["Bengaluru"],
+    "Tamil Nadu": ["Chennai"],
+  };
 
-const branches = {
-  Hyderabad: ["Jubilee Hills", "Madhapur", "Hitech City"],
-  Warangal: ["Hanamkonda", "Kazipet"],
-  Vijayawada: ["Benz Circle", "Patamata"],
-  Visakhapatnam: ["MVP Colony", "Gajuwaka"],
-  Bengaluru: ["Whitefield", "Yelahanka"],
-  Chennai: ["Anna Nagar", "Velachery"]
-};
+  const branches: Record<string, string[]> = {
+    Hyderabad: ["Jubilee Hills", "Madhapur", "Hitech City"],
+    Warangal: ["Hanamkonda", "Kazipet"],
+    Vijayawada: ["Benz Circle", "Patamata"],
+    Visakhapatnam: ["MVP Colony", "Gajuwaka"],
+    Bengaluru: ["Whitefield", "Yelahanka"],
+    Chennai: ["Anna Nagar", "Velachery"],
+  };
 
   const next = useCallback(() => {
     setDirection(1);
@@ -265,7 +265,7 @@ const branches = {
                   className={getMediaClass(slide.mobileMediaFit ?? slide.mediaFit, "z-[1]")}
                   style={{ objectPosition: slide.mobileMediaPosition ?? slide.mediaPosition ?? "center center" }}
                 >
-                  <source src={slide.image} type="video/mp4" />
+                  <source src={slide.image as string} type="video/mp4" />
                 </video>
               </>
             ) : (
@@ -330,7 +330,7 @@ const branches = {
                   className={getMediaClass(slide.mediaFit, "z-[1]")}
                   style={{ objectPosition: slide.mediaPosition ?? "center center" }}
                 >
-                  <source src={slide.image} type="video/mp4" />
+                  <source src={slide.image as string} type="video/mp4" />
                 </video>
               </>
             ) : (
@@ -392,7 +392,7 @@ const branches = {
                   className={getMediaClass(slide.mediaFit, "z-[1]")}
                   style={{ objectPosition: slide.mediaPosition ?? "center center" }}
                 >
-                  <source src={slide.image} type="video/mp4" />
+                  <source src={slide.image as string} type="video/mp4" />
                 </video>
               </>
             ) : (
