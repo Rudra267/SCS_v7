@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, useCallback } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, type Variants } from "framer-motion";
 import Image, { StaticImageData } from "next/image";
 import { ChevronLeft, ChevronRight, MapPin, Search } from "lucide-react";
 import heroSlide1 from "@/assets/hero-slider/1.jpeg";
@@ -128,7 +128,7 @@ const textItem = {
   show: { opacity: 1, y: 0, transition: { duration: 0.4 } },
 };
 
-const slideMotion = {
+const slideMotion: Variants = {
   enter: (direction: number) => ({
     opacity: 0,
     x: direction > 0 ? 70 : -70,
@@ -142,7 +142,7 @@ const slideMotion = {
     rotate: 0,
     scale: 1,
     filter: "blur(0px)",
-    transition: { duration: 0.9, ease: [0.16, 1, 0.3, 1] },
+    transition: { duration: 0.9, ease: [0.16, 1, 0.3, 1] as const },
   },
   exit: (direction: number) => ({
     opacity: 0,
@@ -150,7 +150,7 @@ const slideMotion = {
     rotate: direction > 0 ? -0.8 : 0.8,
     scale: 0.985,
     filter: "blur(8px)",
-    transition: { duration: 0.55, ease: [0.4, 0, 0.2, 1] },
+    transition: { duration: 0.55, ease: [0.4, 0, 0.2, 1] as const },
   }),
 };
 
